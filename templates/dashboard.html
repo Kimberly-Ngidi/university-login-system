@@ -5,59 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - University Portal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .nav-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: linear-gradient(to right, var(--primary-red), var(--primary-orange));
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .nav-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(211, 47, 47, 0.3);
-            color: white;
-        }
-        .logout-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background: #eee;
-            color: var(--text-dark);
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
 <body>
-    <div class="container dashboard-card">
-        <h2>Student Portal</h2>
-        <div class="welcome-msg">Welcome, <strong>{{ username }}</strong></div>
-        
-        <div class="dashboard-grid">
-            <a href="/courses" class="nav-button">View and Manage Courses</a>
-            <a href="/progress" class="nav-button">Access Grades and Academic Progress</a>
-            <a href="/assignments" class="nav-button">Submit Assignments</a>
-            <a href="/online-class" class="nav-button">Attend Online Class</a>
-        </div>
+    <div class="dashboard-wrapper">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">UPortal</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="/student_dashboard" class="nav-link active">
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/courses" class="nav-link">
+                            <span class="nav-text">Manage Courses</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/progress" class="nav-link">
+                            <span class="nav-text">Academic Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/assignments" class="nav-link">
+                            <span class="nav-text">Assignments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/online-class" class="nav-link">
+                            <span class="nav-text">Online Classes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 50px;">
+                        <a href="/logout" class="nav-link" style="background: #fdeaea; color: var(--primary-red);">
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-        <a href="/logout" class="logout-link">Secure Logout</a>
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <!-- Greeting Card -->
+            <section class="card greeting-card">
+                <h1>Hello, {{ username }}!</h1>
+                <p>Welcome back to your academic workspace. You have 3 assignments due this week.</p>
+            </section>
+
+            <!-- Performance Section -->
+            <section class="performance-grid">
+                <div class="card">
+                    <h3>Overall Performance</h3>
+                    <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-red);">88.4</div>
+                    <p class="text-light">Current GPA: 3.8 / 4.0</p>
+                    
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 60%;"></div>
+                        <div class="bar" style="height: 85%;"></div>
+                        <div class="bar" style="height: 45%;"></div>
+                        <div class="bar" style="height: 90%;"></div>
+                        <div class="bar" style="height: 70%;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 5px;">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Course Progress</h3>
+                    <div class="progress-circle-container">
+                        <div class="circle-progress" style="--p: 75%" data-percent="75%"></div>
+                        <div class="circle-progress" style="--p: 40%" data-percent="40%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 0.9rem;">
+                        <span>Math</span><span>Physics</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Linked Teachers -->
+            <section class="card">
+                <h3>My Teachers</h3>
+                <div class="teachers-list">
+                    <div class="teacher-item">
+                        <div class="teacher-avatar"></div>
+                        <span>Dr. Smith</span>
+                    </div>
+                    <div class="teacher-item">
+                        <div class="teacher-avatar"></div>
+                        <span>Prof. Johnson</span>
+                    </div>
+                    <div class="teacher-item">
+                        <div class="teacher-avatar"></div>
+                        <span>Ms. Davis</span>
+                    </div>
+                    <div class="teacher-item">
+                        <div class="teacher-avatar"></div>
+                        <span>Dr. Brown</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Panel: Schedule & Events -->
+        <aside class="right-panel">
+            <h3>Daily Schedule</h3>
+            <div class="schedule-item">
+                <div class="schedule-time">09:00</div>
+                <div class="schedule-info">Mathematics (Lecture)</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">11:30</div>
+                <div class="schedule-info">Computer Science</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">14:00</div>
+                <div class="schedule-info">Physics Lab</div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Upcoming Events</h3>
+            <div class="event-card">
+                <div style="font-weight: bold;">Midterm Exams</div>
+                <div style="font-size: 0.8rem;">Starts Jan 25, 2026</div>
+            </div>
+            <div class="event-card">
+                <div style="font-weight: bold;">Science Fair</div>
+                <div style="font-size: 0.8rem;">Feb 10, 2026</div>
+            </div>
+        </aside>
     </div>
 </body>
 </html>

@@ -3,114 +3,227 @@
     --primary-orange: #F57C00;
     --accent-orange: #FFB74D;
     --bg-white: #FFFFFF;
-    --bg-off-white: #FDFDFD;
+    --bg-off-white: #f8f9fa;
     --text-dark: #212121;
     --text-light: #757575;
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --border-radius: 12px;
+    --sidebar-width: 260px;
+    --right-panel-width: 300px;
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg-white) 0%, #FFF3E0 100%);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--bg-off-white);
     color: var(--text-dark);
     margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Dashboard Layout Structure */
+.dashboard-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
 }
 
-.container {
-    background: var(--bg-white);
-    padding: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    max-width: 400px;
-    width: 90%;
-    border-top: 5px solid var(--primary-red);
+/* Left Sidebar Navigation */
+.sidebar {
+    width: var(--sidebar-width);
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    padding: 30px 20px;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    color: var(--primary-red);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
     text-align: center;
 }
 
-h2 {
-    color: var(--primary-red);
-    font-size: 2rem;
-    margin-bottom: 30px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.nav-menu {
+    list-style: none;
+    padding: 0;
 }
 
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
+.nav-item {
+    margin-bottom: 10px;
 }
 
-input {
-    width: 100%;
+.nav-link {
+    display: flex;
+    align-items: center;
     padding: 12px 15px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ddd;
+    color: var(--text-dark);
+    text-decoration: none;
     border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-input:focus {
-    outline: none;
-    border-color: var(--primary-orange);
-    box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.1);
-}
-
-button {
-    width: 100%;
-    padding: 14px;
+.nav-link:hover, .nav-link.active {
     background: linear-gradient(to right, var(--primary-red), var(--primary-orange));
     color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 10px;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    margin-right: var(--right-panel-width);
+    padding: 30px;
 }
 
-button:active {
-    transform: translateY(0);
+/* Right Panel */
+.right-panel {
+    width: var(--right-panel-width);
+    background: white;
+    border-left: 1px solid #eee;
+    padding: 30px 20px;
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-a {
-    color: var(--primary-orange);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
+/* Cards & Sections */
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
 }
 
-a:hover {
+.greeting-card {
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-orange) 100%);
+    color: white;
+}
+
+.greeting-card h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Performance Section */
+.performance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.progress-circle-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.circle-progress {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary-orange) var(--p), #eee 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circle-progress::before {
+    content: attr(data-percent);
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.bar-chart {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    padding-top: 20px;
+}
+
+.bar {
+    flex: 1;
+    background: var(--primary-orange);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+}
+
+/* Teachers Section */
+.teachers-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.teacher-item {
+    text-align: center;
+    min-width: 100px;
+}
+
+.teacher-avatar {
+    width: 60px;
+    height: 60px;
+    background: #eee;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+
+/* Schedule & Events */
+.schedule-item {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-time {
+    width: 70px;
+    font-weight: bold;
     color: var(--primary-red);
-    text-decoration: underline;
 }
 
-.footer-text {
-    margin-top: 25px;
-    font-size: 0.9rem;
-    color: var(--text-light);
+.event-card {
+    background: #FFF3E0;
+    border-left: 4px solid var(--primary-orange);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 0 8px 8px 0;
 }
 
-/* Dashboard specific */
-.dashboard-card {
-    max-width: 600px;
+/* Responsive */
+@media (max-width: 1200px) {
+    .right-panel {
+        display: none;
+    }
+    .main-content {
+        margin-right: 0;
+    }
 }
 
-.welcome-msg {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        padding: 20px 10px;
+    }
+    .sidebar-logo, .nav-text {
+        display: none;
+    }
+    .main-content {
+        margin-left: 70px;
+    }
 }
