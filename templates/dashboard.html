@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard - Sol Plaatje University</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome to your Dashboard</h1>
-    <p>You are logged in.</p>
-    <a href="/logout">Logout</a>
+    <h2>Welcome, {{ username }}</h2>
+    <p>This is your dashboard.</p>
+    <a href="/login">Logout</a>
 </body>
 </html>
