@@ -16,6 +16,13 @@
             <div class="form-group">
                 <input type="password" name="password" placeholder="Create Password" required>
             </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Register as:</label>
+                <select name="role" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                    <option value="student">Student</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
             <button type="submit">Register Now</button>
         </form>
         {% if message %}
