@@ -14,14 +14,27 @@
 
 body {
     font-family: 'Inter', 'Segoe UI', sans-serif;
-    background-color: var(--bg-off-white);
+    background: linear-gradient(135deg, var(--bg-white) 0%, #FFF3E0 100%);
     color: var(--text-dark);
     margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* Dashboard Layout Structure */
+.auth-container {
+    background: var(--bg-white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    width: 90%;
+    border-top: 5px solid var(--primary-red);
+    text-align: center;
+}
+
+/* Dashboard Layout Structure (keep existing) */
 .dashboard-wrapper {
     display: flex;
     min-height: 100vh;
