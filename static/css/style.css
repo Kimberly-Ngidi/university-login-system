@@ -12,7 +12,8 @@
     --right-panel-width: 300px;
 }
 
-body {
+/* Global Body Style for Auth Pages */
+body.auth-page {
     font-family: 'Inter', 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, var(--bg-white) 0%, #FFF3E0 100%);
     color: var(--text-dark);
@@ -21,6 +22,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+/* Global Body Style for Dashboard */
+body.dashboard-page {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--bg-off-white);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .auth-container {
@@ -34,7 +45,76 @@ body {
     text-align: center;
 }
 
-/* Dashboard Layout Structure (keep existing) */
+.auth-container h2 {
+    color: var(--primary-red);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-container input, .auth-container select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.auth-container input:focus, .auth-container select:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 3px rgba(245, 124, 0, 0.1);
+}
+
+.auth-container button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, var(--primary-red), var(--primary-orange));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+.auth-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+}
+
+.auth-container a {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.auth-container a:hover {
+    color: var(--primary-red);
+    text-decoration: underline;
+}
+
+.footer-text {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Dashboard Layout Structure */
 .dashboard-wrapper {
     display: flex;
     min-height: 100vh;
