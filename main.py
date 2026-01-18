@@ -43,5 +43,10 @@ def dashboard(username):
     return render_template('dashboard.html', username=username)
 
 
+@app.route('/logout')
+def logout():
+    return redirect(url_for('login'))
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
