@@ -86,6 +86,30 @@ def staff_dashboard():
     return render_template('staff_dashboard.html', username=session['username'])
 
 
+@app.route('/manage-courses')
+def manage_courses():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Manage Courses</h2><p>Course administration system coming soon.</p><a href='/staff_dashboard'>Back</a>"
+
+
+@app.route('/student-records')
+def student_records():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Student Records</h2><p>Record management system coming soon.</p><a href='/staff_dashboard'>Back</a>"
+
+
+@app.route('/gradebook')
+def gradebook():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Faculty Gradebook</h2><p>Grade entry system coming soon.</p><a href='/staff_dashboard'>Back</a>"
+
+
+@app.route('/department-meetings')
+def dept_meetings():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Department Meetings</h2><p>Meeting schedule coming soon.</p><a href='/staff_dashboard'>Back</a>"
+
+
 @app.route('/logout')
 def logout():
     session.clear()

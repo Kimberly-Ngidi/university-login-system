@@ -6,14 +6,136 @@
     <title>Staff Dashboard - University Portal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <div class="container dashboard-card" style="border-top: 5px solid var(--primary-orange);">
-        <h2>Staff Administration</h2>
-        <div class="welcome-msg">Welcome, <strong>{{ username }}</strong> (Staff)</div>
-        <p>Manage courses, view student lists, and access faculty resources.</p>
-        <div style="margin-top: 30px;">
-            <a href="/logout" class="button" style="display: inline-block; padding: 12px 25px; background: var(--primary-red); color: white; border-radius: 8px; text-decoration: none;">Logout</a>
-        </div>
+<body class="dashboard-page">
+    <div class="dashboard-wrapper">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar" style="border-right: 1px solid #eee; box-shadow: none;">
+            <div class="sidebar-logo" style="color: var(--primary-orange);">UPortal Staff</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="/staff_dashboard" class="nav-link active" style="background: linear-gradient(to right, var(--primary-orange), #ff9800);">
+                            <span class="nav-text">Staff Overview</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/manage-courses" class="nav-link">
+                            <span class="nav-text">Manage Courses</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/student-records" class="nav-link">
+                            <span class="nav-text">Student Records</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/gradebook" class="nav-link">
+                            <span class="nav-text">Faculty Gradebook</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/department-meetings" class="nav-link">
+                            <span class="nav-text">Dept. Meetings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 50px;">
+                        <a href="/logout" class="nav-link" style="background: #fdeaea; color: var(--primary-red);">
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <!-- Greeting Card -->
+            <section class="card greeting-card" style="background: linear-gradient(135deg, var(--primary-orange) 0%, #ff9800 100%);">
+                <h1>Faculty Portal: Welcome, {{ username }}</h1>
+                <p>Manage your lectures and student interactions. You have 2 department meetings scheduled today.</p>
+            </section>
+
+            <!-- Staff Analytics Section -->
+            <section class="performance-grid">
+                <div class="card">
+                    <h3>Course Engagement</h3>
+                    <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-orange);">92%</div>
+                    <p class="text-light">Avg. Student Attendance</p>
+                    
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 75%; background: var(--primary-orange);"></div>
+                        <div class="bar" style="height: 90%; background: var(--primary-orange);"></div>
+                        <div class="bar" style="height: 80%; background: var(--primary-orange);"></div>
+                        <div class="bar" style="height: 65%; background: var(--primary-orange);"></div>
+                        <div class="bar" style="height: 95%; background: var(--primary-orange);"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 5px;">
+                        <span>CS101</span><span>CS202</span><span>IT301</span><span>NET10</span><span>SEC5</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Grading Status</h3>
+                    <div class="progress-circle-container">
+                        <div class="circle-progress" style="--p: 85%; background: conic-gradient(var(--primary-orange) var(--p), #eee 0);" data-percent="85%"></div>
+                        <div class="circle-progress" style="--p: 60%; background: conic-gradient(var(--primary-red) var(--p), #eee 0);" data-percent="60%"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-around; margin-top: 10px; font-size: 0.9rem;">
+                        <span>Assignments</span><span>Midterms</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research & Publications Section -->
+            <section class="card">
+                <h3>Faculty Resources</h3>
+                <div class="teachers-list">
+                    <div class="teacher-item">
+                        <div class="teacher-avatar" style="background: #FFF3E0; display: flex; align-items: center; justify-content: center;">📄</div>
+                        <span>Grant Apps</span>
+                    </div>
+                    <div class="teacher-item">
+                        <div class="teacher-avatar" style="background: #FFF3E0; display: flex; align-items: center; justify-content: center;">📚</div>
+                        <span>Journals</span>
+                    </div>
+                    <div class="teacher-item">
+                        <div class="teacher-avatar" style="background: #FFF3E0; display: flex; align-items: center; justify-content: center;">🔬</div>
+                        <span>Lab Access</span>
+                    </div>
+                    <div class="teacher-item">
+                        <div class="teacher-avatar" style="background: #FFF3E0; display: flex; align-items: center; justify-content: center;">🏢</div>
+                        <span>HR Portal</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Panel: Schedule & Faculty Events -->
+        <aside class="right-panel">
+            <h3>Teaching Schedule</h3>
+            <div class="schedule-item">
+                <div class="schedule-time">10:00</div>
+                <div class="schedule-info">Advanced Algorithms</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">13:00</div>
+                <div class="schedule-info">Office Hours (Room 302)</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">15:30</div>
+                <div class="schedule-info">Web Dev Seminar</div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Faculty Deadlines</h3>
+            <div class="event-card" style="border-left-color: var(--primary-red);">
+                <div style="font-weight: bold;">Grade Submission</div>
+                <div style="font-size: 0.8rem;">Due by Jan 22, 2026</div>
+            </div>
+            <div class="event-card">
+                <div style="font-weight: bold;">Board Meeting</div>
+                <div style="font-size: 0.8rem;">Jan 28, 2026</div>
+            </div>
+        </aside>
     </div>
 </body>
 </html>
