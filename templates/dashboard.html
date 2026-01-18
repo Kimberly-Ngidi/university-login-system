@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard - Sol Plaatje University</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - University Portal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h2>Welcome, {{ username }}</h2>
-    <p>This is your dashboard.</p>
-    <a href="/login">Logout</a>
+    <div class="container dashboard-card">
+        <h2>Student Dashboard</h2>
+        <div class="welcome-msg">Welcome back, <strong>{{ username }}</strong>!</div>
+        <p>Access your courses, grades, and university resources from here.</p>
+        <div style="margin-top: 30px;">
+            <a href="/logout" class="button" style="display: inline-block; padding: 12px 25px; background: var(--primary-red); color: white; border-radius: 8px; text-decoration: none;">Logout</a>
+        </div>
+    </div>
 </body>
 </html>
