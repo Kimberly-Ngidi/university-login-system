@@ -3,17 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - University Portal</title>
+    <title>Student Dashboard - University Portal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(to right, var(--primary-red), var(--primary-orange));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(211, 47, 47, 0.3);
+            color: white;
+        }
+        .logout-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #eee;
+            color: var(--text-dark);
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container dashboard-card">
-        <h2>Student Dashboard</h2>
-        <div class="welcome-msg">Welcome back, <strong>{{ username }}</strong>!</div>
-        <p>Access your courses, grades, and university resources from here.</p>
-        <div style="margin-top: 30px;">
-            <a href="/logout" class="button" style="display: inline-block; padding: 12px 25px; background: var(--primary-red); color: white; border-radius: 8px; text-decoration: none;">Logout</a>
+        <h2>Student Portal</h2>
+        <div class="welcome-msg">Welcome, <strong>{{ username }}</strong></div>
+        
+        <div class="dashboard-grid">
+            <a href="/courses" class="nav-button">View and Manage Courses</a>
+            <a href="/progress" class="nav-button">Access Grades and Academic Progress</a>
+            <a href="/assignments" class="nav-button">Submit Assignments</a>
+            <a href="/online-class" class="nav-button">Attend Online Class</a>
         </div>
+
+        <a href="/logout" class="logout-link">Secure Logout</a>
     </div>
 </body>
 </html>

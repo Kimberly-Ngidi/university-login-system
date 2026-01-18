@@ -55,6 +55,30 @@ def student_dashboard():
     return render_template('dashboard.html', username=session['username'])
 
 
+@app.route('/courses')
+def courses():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Manage Courses</h2><p>Course management system coming soon.</p><a href='/student_dashboard'>Back</a>"
+
+
+@app.route('/progress')
+def progress():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Academic Progress</h2><p>Grades and progress tracking coming soon.</p><a href='/student_dashboard'>Back</a>"
+
+
+@app.route('/assignments')
+def assignments():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Assignments</h2><p>Assignment submission portal coming soon.</p><a href='/student_dashboard'>Back</a>"
+
+
+@app.route('/online-class')
+def online_class():
+    if 'username' not in session: return redirect(url_for('login'))
+    return "<h2>Online Class</h2><p>Virtual classroom link coming soon.</p><a href='/student_dashboard'>Back</a>"
+
+
 @app.route('/staff_dashboard')
 def staff_dashboard():
     if 'username' not in session or session.get('role') != 'staff':
